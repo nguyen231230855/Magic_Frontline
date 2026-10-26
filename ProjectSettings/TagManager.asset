@@ -44,5 +44,8 @@ TagManager:
   - name: Ghost
     uniqueID: 1657054015
     locked: 0
+  - name: Enemy
+    uniqueID: 2670378275
+    locked: 0
   m_RenderingLayers:
   - Default
