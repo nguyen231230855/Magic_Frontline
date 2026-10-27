@@ -101,4 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  health: 2
   waypoints: []
+  currentWayPoint: 0
