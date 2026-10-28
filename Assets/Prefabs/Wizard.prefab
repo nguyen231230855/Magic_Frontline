@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4471485026568711982}
   - component: {fileID: 1958023661324767591}
   - component: {fileID: 9102522362187150078}
+  - component: {fileID: 539065238617653889}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -104,4 +105,61 @@ MonoBehaviour:
   fireRate: 1.5
   projectilePrefab: {fileID: 4862992442665631509, guid: 8c0ba380e26c47440b0ae7a27b18ea97, type: 3}
   firePoint: {fileID: 4471485026568711982}
+  upgradeStages:
+  - range: 7
+    fireRate: 2
+    sprite: {fileID: -7095149832740230368, guid: 74e0598910933e7418707fb8d2c06e43, type: 3}
+    price: 20
+  - range: 10
+    fireRate: 5
+    sprite: {fileID: 7396544787085421766, guid: dc055b0f5cf9d8949b8f2b60419f6d68, type: 3}
+    price: 30
+  upgradeStage: 0
+  towerUpgradeUIPrefab: {fileID: 5780336256910844033, guid: bf9f294a7d65f1241afa7b7d4bb2f2df, type: 3}
   towerPrice: 10
+--- !u!61 &539065238617653889
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101401613449992327}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.15899992}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.65}
+    oldSize: {x: 1.09, y: 1.06}
+    newSize: {x: 1.09, y: 1.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.09, y: 1.06}
+  m_EdgeRadius: 0
