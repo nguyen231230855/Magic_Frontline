@@ -7,6 +7,8 @@ public class Tower : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform firePoint;
 
+    public int towerPrice = 1;
+
     private float fireCooldown = 0f;
     void Update()
     {

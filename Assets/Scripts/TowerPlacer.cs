@@ -24,7 +24,7 @@ public class TowerPlacer : MonoBehaviour
 
     void HandlePlacementHover()
     {
-        if (TowerSelectionUI.selectedTowerPrefab == null)
+        if (TowerSelectionUI.SelectedTowerPrefab == null)
         {
             if (ghostInstance != null)
             {
@@ -38,7 +38,7 @@ public class TowerPlacer : MonoBehaviour
             ghostInstance = Instantiate(ghostPrefab);
         }
 
-        ghostInstance.GetComponent<SpriteRenderer>().sprite = TowerSelectionUI.selectedTowerPrefab.GetComponent<SpriteRenderer>().sprite;
+        ghostInstance.GetComponent<SpriteRenderer>().sprite = TowerSelectionUI.SelectedTowerPrefab.GetComponent<SpriteRenderer>().sprite;
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;
@@ -62,7 +62,7 @@ public class TowerPlacer : MonoBehaviour
     void HandlePlacementClick()
     {
         if (!Input.GetMouseButtonDown(0)) return;
-        if (TowerSelectionUI.selectedTowerPrefab == null) return;
+        if (TowerSelectionUI.SelectedTowerPrefab == null) return;
 
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
 
@@ -73,9 +73,11 @@ public class TowerPlacer : MonoBehaviour
 
         if (!placementMap.HasTile(cellPos) || occupiedCells.Contains(cellPos)) return;
 
-        Instantiate(TowerSelectionUI.selectedTowerPrefab, ghostInstance.transform.position, Quaternion.identity);
+        Instantiate(TowerSelectionUI.SelectedTowerPrefab, ghostInstance.transform.position, Quaternion.identity);
 
-        TowerSelectionUI.selectedTowerPrefab = null;
+        CoinManager.instance.UpdateCoins(-TowerSelectionUI.SelectedTowerPrefab.GetComponent<Tower>().towerPrice);
+
+        TowerSelectionUI.SelectedTowerPrefab = null;
         occupiedCells.Add(cellPos);
     }
 }

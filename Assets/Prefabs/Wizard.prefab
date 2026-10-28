@@ -104,3 +104,4 @@ MonoBehaviour:
   fireRate: 1.5
   projectilePrefab: {fileID: 4862992442665631509, guid: 8c0ba380e26c47440b0ae7a27b18ea97, type: 3}
   firePoint: {fileID: 4471485026568711982}
+  towerPrice: 10

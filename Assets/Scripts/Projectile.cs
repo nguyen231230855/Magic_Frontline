@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
             e.health -= 1;
             if (e.health <= 0)
             {
+                CoinManager.instance.UpdateCoins(1);
                 Destroy(target.gameObject);
             }
 
