@@ -4,6 +4,7 @@ public class Projectile : MonoBehaviour
 {
     public float speed = 8f;
     public Transform target;
+    public GameObject hitPS;
 
     void Update()
     {
@@ -29,6 +30,8 @@ public class Projectile : MonoBehaviour
                 Destroy(target.gameObject);
             }
 
+
+            Instantiate(hitPS, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
