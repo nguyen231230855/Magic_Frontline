@@ -103,3 +103,4 @@ MonoBehaviour:
   speed: 6
   target: {fileID: 0}
   hitPS: {fileID: 2928063138329198227, guid: 22450f10f42466147b1dc698a9ef213d, type: 3}
+  hitSFX: {fileID: 8300000, guid: 0f4ab3424e5860e44addeaeea2cda286, type: 3}

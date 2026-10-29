@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
     public Transform target;
     public GameObject hitPS;
 
+    public AudioClip hitSFX;
+
     void Update()
     {
         if (target == null)
@@ -32,6 +34,7 @@ public class Projectile : MonoBehaviour
 
 
             Instantiate(hitPS, transform.position, Quaternion.identity);
+            AudioManager.Instance.PlaySFX(hitSFX);
             Destroy(gameObject);
         }
     }
