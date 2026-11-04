@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 9b977729e4db4214fbae329583c9e4e8
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 7
+  defaultSettings:
+    serializedVersion: 2
+    loadType: 2
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+    preloadAudioData: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 359736
+  packageName: Ultimate Fantasy Music Bundle - LITE Version 5 free tracks!
+  packageVersion: 1.0
+  assetPath: Assets/LITE Version - Ultimate Fantasy Music Bundle/Forsaken Monastery.wav
+  uploadId: 857326

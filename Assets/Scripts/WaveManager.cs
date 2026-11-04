@@ -24,10 +24,14 @@ public class WaveManager : MonoBehaviour
     public TextMeshProUGUI waveTxt;
     private int currentWaveIndex = 0;
     private bool waveRunning = false;
+    Grid grid;
+    bool pathSnapped;
 
     void Start()
     {
         startWaveButton.onClick.AddListener(StartWave);
+        grid = FindFirstObjectByType<Grid>();
+        Debug.Assert(grid != null, "WaveManager missing Grid");
     }
 
     public void StartWave()
@@ -66,9 +70,18 @@ public class WaveManager : MonoBehaviour
 
     void SpawnEnemy(GameObject prefab)
     {
-        Vector3 spawnPos = wayPoints[0].position;
-        spawnPos.z = 0f;
-        GameObject e = Instantiate(prefab, spawnPos, Quaternion.identity);
+        if (!pathSnapped)
+        {
+            for (int i = 0; i < wayPoints.Length; i++)
+            {
+                Vector3 center = grid.GetCellCenterWorld(grid.WorldToCell(wayPoints[i].position));
+                center.z = 0f;
+                wayPoints[i].position = center;
+            }
+            pathSnapped = true;
+        }
+
+        GameObject e = Instantiate(prefab, wayPoints[0].position, Quaternion.identity);
         Enemy enemy = e.GetComponent<Enemy>();
         enemy.waypoints = wayPoints;
     }
