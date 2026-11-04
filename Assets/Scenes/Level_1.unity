@@ -4265,7 +4265,7 @@ GameObject:
   - component: {fileID: 784487726}
   - component: {fileID: 784487725}
   m_Layer: 5
-  m_Name: OptionsBTN
+  m_Name: SettingBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

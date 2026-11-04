@@ -34,6 +34,15 @@ public class WaveManager : MonoBehaviour
         Debug.Assert(grid != null, "WaveManager missing Grid");
     }
 
+    public void UseHud(Button button, TextMeshProUGUI text)
+    {
+        if (startWaveButton != null)
+            startWaveButton.onClick.RemoveListener(StartWave);
+        startWaveButton = button;
+        waveTxt = text;
+        startWaveButton.onClick.AddListener(StartWave);
+    }
+
     public void StartWave()
     {
         if (waveRunning) return;

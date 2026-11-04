@@ -101,17 +101,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdce135d9214b14899bd0b9c210d6a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
-  fireRate: 1.5
+  range: 3.4
+  fireRate: 0.6
   projectilePrefab: {fileID: 4862992442665631509, guid: 8c0ba380e26c47440b0ae7a27b18ea97, type: 3}
   firePoint: {fileID: 4471485026568711982}
   upgradeStages:
-  - range: 7
-    fireRate: 2
+  - range: 4.6
+    fireRate: 0.85
     sprite: {fileID: -7095149832740230368, guid: 74e0598910933e7418707fb8d2c06e43, type: 3}
     price: 20
-  - range: 10
-    fireRate: 5
+  - range: 6
+    fireRate: 1.1
     sprite: {fileID: 7396544787085421766, guid: dc055b0f5cf9d8949b8f2b60419f6d68, type: 3}
     price: 30
   upgradeStage: 0

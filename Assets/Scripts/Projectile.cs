@@ -3,6 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed = 8f;
+    public int damage = 1;
     public Transform target;
     public GameObject hitPS;
 
@@ -25,10 +26,10 @@ public class Projectile : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) < 0.15f)
         {
             Enemy e = target.GetComponent<Enemy>();
-            e.health -= 1;
+            e.health -= damage;
             if (e.health <= 0)
             {
-                CoinManager.instance.UpdateCoins(1);
+                CoinManager.instance.UpdateCoins(e.reward);
                 Destroy(target.gameObject);
             }
 
