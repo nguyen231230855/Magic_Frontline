@@ -4035,18 +4035,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - duration: 15
-    easyEnemies: 5
-    hardEnemies: 0
-  - duration: 15
-    easyEnemies: 8
-    hardEnemies: 0
-  - duration: 15
+  - duration: 18
     easyEnemies: 8
     hardEnemies: 2
+  - duration: 16
+    easyEnemies: 6
+    hardEnemies: 4
   - duration: 15
-    easyEnemies: 2
+    easyEnemies: 6
+    hardEnemies: 6
+  - duration: 14
+    easyEnemies: 4
     hardEnemies: 8
+  - duration: 12
+    easyEnemies: 2
+    hardEnemies: 10
   startWaveButton: {fileID: 1473482958}
   easyEnemyPrefab: {fileID: 2924450634884478164, guid: 0ab2825a19f1d8a48a63d23dd248d148, type: 3}
   hardEnemyPrefab: {fileID: 6882696952312109828, guid: ecf4a2841df41d346aa4bc9ebf3e071f, type: 3}

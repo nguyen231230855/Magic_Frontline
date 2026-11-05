@@ -10,6 +10,7 @@ public class LevelCanvasLoader : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Boot()
     {
+        PlayerPrefs.DeleteKey("clearedLevel");
         var go = new GameObject(nameof(LevelCanvasLoader));
         DontDestroyOnLoad(go);
         go.AddComponent<LevelCanvasLoader>();
@@ -158,7 +159,10 @@ public class LevelHome : MonoBehaviour
         foreach (var button in GetComponentsInChildren<Button>(true))
         {
             if (button.name == "GoBTN")
+            {
+                button.gameObject.SetActive(true);
                 button.interactable = true;
+            }
         }
         foreach (var upgrade in GetComponentsInChildren<TowerUpgradeUI>(true))
             Destroy(upgrade.gameObject);

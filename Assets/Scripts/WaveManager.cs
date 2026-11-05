@@ -22,17 +22,23 @@ public class WaveManager : MonoBehaviour
     public Transform[] wayPoints;
 
     public TextMeshProUGUI waveTxt;
+    const float autoDelay = 5f;
     private int currentWaveIndex = 0;
     private bool waveRunning = false;
+    Coroutine auto;
     static bool won;
     Grid grid;
     bool pathSnapped;
 
     void Start()
     {
+        startWaveButton.onClick.RemoveListener(StartWave);
         startWaveButton.onClick.AddListener(StartWave);
+        startWaveButton.gameObject.SetActive(true);
+        startWaveButton.interactable = true;
         grid = FindFirstObjectByType<Grid>();
         Debug.Assert(grid != null, "WaveManager missing Grid");
+        Debug.Assert(waves != null && waves.Length > 0, "WaveManager has no waves");
         won = false;
     }
 
@@ -45,11 +51,23 @@ public class WaveManager : MonoBehaviour
         startWaveButton.onClick.AddListener(StartWave);
     }
 
+    IEnumerator AutoStart()
+    {
+        yield return new WaitForSeconds(autoDelay);
+        auto = null;
+        StartWave();
+    }
+
     public void StartWave()
     {
         if (waveRunning) return;
         if (currentWaveIndex >= waves.Length) return;
-        
+        if (auto != null)
+        {
+            StopCoroutine(auto);
+            auto = null;
+        }
+
         StartCoroutine(RunWave());
     }
     
@@ -57,6 +75,16 @@ public class WaveManager : MonoBehaviour
     {
         waveRunning = true;
         startWaveButton.interactable = false;
+
+        int later = 0;
+        foreach (var manager in FindObjectsByType<WaveManager>(FindObjectsSortMode.None))
+        {
+            if (manager.gameObject.scene != gameObject.scene) continue;
+            if (string.CompareOrdinal(manager.name, name) < 0)
+                later++;
+        }
+        if (later > 0)
+            yield return new WaitForSeconds(later * 2.5f);
 
         WaveData wave = waves[currentWaveIndex];
 
@@ -74,9 +102,19 @@ public class WaveManager : MonoBehaviour
 
         yield return new WaitForSeconds(wave.duration / 3);
         waveRunning = false;
-        startWaveButton.interactable = true;
         currentWaveIndex++;
+        if (currentWaveIndex >= waves.Length)
+        {
+            startWaveButton.gameObject.SetActive(false);
+            yield break;
+        }
         waveTxt.text = (currentWaveIndex + 1).ToString();
+        // shortcut: one shared GoBTN, the first lane that reaches its last wave hides it
+        if (currentWaveIndex == waves.Length - 1)
+            startWaveButton.gameObject.SetActive(false);
+        else
+            startWaveButton.interactable = true;
+        auto = StartCoroutine(AutoStart());
     }
 
     bool Cleared => currentWaveIndex >= waves.Length && !waveRunning;
