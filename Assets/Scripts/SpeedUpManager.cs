@@ -8,6 +8,13 @@ public class SpeedUpManager : MonoBehaviour
     public Color normalColor;
     public Color speedUpColor;
 
+    public void ResetSpeed()
+    {
+        speedUp = false;
+        btnImage.color = normalColor;
+        Time.timeScale = 1f;
+    }
+
     public void ToggleSpeedUp()
     {
         speedUp = !speedUp;

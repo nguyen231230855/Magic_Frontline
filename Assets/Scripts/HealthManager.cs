@@ -1,15 +1,24 @@
-using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     public static HealthManager Instance;
 
     public int health = 100;
     public TextMeshProUGUI healthTxt;
+    public int MaxHealth { get; private set; }
+
     private void Awake()
     {
         Instance = this;
+        MaxHealth = health;
+    }
+
+    public void ResetHealth()
+    {
+        health = MaxHealth;
+        Instance = this;
+        healthTxt.text = health.ToString();
     }
 
     public void UpdateHealth(int changeAmount)
@@ -20,7 +29,12 @@ public class HealthManager : MonoBehaviour
 
         if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            health = 0;
+            healthTxt.text = "0";
+            var home = FindFirstObjectByType<LevelHome>();
+            Debug.Assert(home != null, "LevelHome missing");
+            if (home != null)
+                home.ShowLost();
         }
     }
 }

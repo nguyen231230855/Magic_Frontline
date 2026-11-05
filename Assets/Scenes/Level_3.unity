@@ -7809,7 +7809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078662af9be5fe649984e7b1438e5fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1
   healthTxt: {fileID: 993282627}
 --- !u!114 &1470176518
 MonoBehaviour:

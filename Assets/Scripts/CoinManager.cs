@@ -7,9 +7,18 @@ public class CoinManager : MonoBehaviour
 
     public int coins;
     public TextMeshProUGUI coinTxt;
+    int startCoins;
 
     private void Awake()
     {
+        instance = this;
+        startCoins = coins;
+        UpdateCoins(0);
+    }
+
+    public void ResetCoins()
+    {
+        coins = startCoins;
         instance = this;
         UpdateCoins(0);
     }

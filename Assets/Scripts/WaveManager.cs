@@ -24,6 +24,7 @@ public class WaveManager : MonoBehaviour
     public TextMeshProUGUI waveTxt;
     private int currentWaveIndex = 0;
     private bool waveRunning = false;
+    static bool won;
     Grid grid;
     bool pathSnapped;
 
@@ -32,6 +33,7 @@ public class WaveManager : MonoBehaviour
         startWaveButton.onClick.AddListener(StartWave);
         grid = FindFirstObjectByType<Grid>();
         Debug.Assert(grid != null, "WaveManager missing Grid");
+        won = false;
     }
 
     public void UseHud(Button button, TextMeshProUGUI text)
@@ -75,6 +77,23 @@ public class WaveManager : MonoBehaviour
         startWaveButton.interactable = true;
         currentWaveIndex++;
         waveTxt.text = (currentWaveIndex + 1).ToString();
+    }
+
+    bool Cleared => currentWaveIndex >= waves.Length && !waveRunning;
+
+    void Update()
+    {
+        if (won || !Cleared) return;
+        if (HealthManager.Instance == null || HealthManager.Instance.health <= 0) return;
+        foreach (var manager in FindObjectsByType<WaveManager>(FindObjectsSortMode.None))
+            if (!manager.Cleared) return;
+        if (FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length > 0) return;
+        won = true;
+        startWaveButton.interactable = false;
+        Time.timeScale = 0f;
+        var home = FindFirstObjectByType<LevelHome>();
+        Debug.Assert(home != null, "LevelHome missing");
+        home.ShowWin(HealthManager.Instance.health);
     }
 
     void SpawnEnemy(GameObject prefab)

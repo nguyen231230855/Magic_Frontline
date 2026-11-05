@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
 
     static bool revealed;
     public static bool opened;
+    public static bool showPlay;
     static GameObject keptOptions;
     static GameObject keptDim;
     static GameObject keptPlay;
@@ -85,6 +86,11 @@ public class MenuManager : MonoBehaviour
                 capButton.interactable = false;
             menuScreen.SetActive(true);
             revealed = true;
+            if (showPlay)
+            {
+                showPlay = false;
+                OpenPlay();
+            }
             return;
         }
 

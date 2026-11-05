@@ -86,7 +86,7 @@ public class LevelCanvasLoader : MonoBehaviour
         if (home == null)
             home = canvas.AddComponent<LevelHome>();
         else
-            home.Hide();
+            home.ResetLevel();
     }
 }
 
@@ -94,6 +94,9 @@ public class LevelHome : MonoBehaviour
 {
     GameObject panel;
     GameObject dim;
+    Transform winPanel;
+    Transform lostPanel;
+    bool lost;
     float previousScale = 1f;
     bool paused;
 
@@ -113,6 +116,116 @@ public class LevelHome : MonoBehaviour
         foreach (var button in GetComponentsInChildren<Button>(true))
             button.onClick.AddListener(PlayClick);
         Debug.Assert(MenuManager.ClickSfx != null, "Click sfx missing");
+        winPanel = transform.Find("WinPanel");
+        if (winPanel != null)
+        {
+            winPanel.gameObject.SetActive(false);
+            Wire(winPanel, "RePlayBTN", Replay);
+            Wire(winPanel, "NextBTN", Next);
+        }
+        lostPanel = transform.Find("LostPanel");
+        if (lostPanel != null)
+        {
+            lostPanel.gameObject.SetActive(false);
+            Wire(lostPanel, "RePlayBTN", Replay);
+            Wire(lostPanel, "BackBTN", Back);
+        }
+    }
+
+    void Wire(Transform root, string name, UnityEngine.Events.UnityAction action)
+    {
+        foreach (var button in root.GetComponentsInChildren<Button>(true))
+        {
+            if (button.name != name)
+                continue;
+            button.onClick.AddListener(action);
+            return;
+        }
+        Debug.Assert(false, name + " missing");
+    }
+
+    public void ResetLevel()
+    {
+        lost = false;
+        paused = false;
+        Time.timeScale = 1f;
+        TowerSelectionUI.SelectedTowerPrefab = null;
+        if (winPanel != null)
+            winPanel.gameObject.SetActive(false);
+        if (lostPanel != null)
+            lostPanel.gameObject.SetActive(false);
+        if (panel != null)
+            panel.SetActive(false);
+        if (dim != null)
+            dim.SetActive(false);
+        var health = GetComponentInChildren<HealthManager>(true);
+        if (health != null)
+            health.ResetHealth();
+        var coins = GetComponentInChildren<CoinManager>(true);
+        if (coins != null)
+            coins.ResetCoins();
+        var speed = GetComponentInChildren<SpeedUpManager>(true);
+        if (speed != null)
+            speed.ResetSpeed();
+        foreach (var label in GetComponentsInChildren<TextMeshProUGUI>(true))
+        {
+            if (label.name == "WaveTxt")
+                label.text = "1";
+        }
+        foreach (var button in GetComponentsInChildren<Button>(true))
+        {
+            if (button.name == "GoBTN")
+                button.interactable = true;
+        }
+        foreach (var upgrade in GetComponentsInChildren<TowerUpgradeUI>(true))
+            Destroy(upgrade.gameObject);
+    }
+
+    public void ShowLost()
+    {
+        if (lost)
+            return;
+        lost = true;
+        Time.timeScale = 0f;
+        Debug.Assert(lostPanel != null, "LostPanel missing");
+        if (lostPanel == null)
+            return;
+        lostPanel.gameObject.SetActive(true);
+        lostPanel.SetAsLastSibling();
+    }
+
+    void Back()
+    {
+        Time.timeScale = 1f;
+        MenuManager.opened = true;
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    void Replay()
+    {
+        ResetLevel();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void Next()
+    {
+        Time.timeScale = 1f;
+        MenuManager.opened = true;
+        MenuManager.showPlay = true;
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void ShowWin(int health)
+    {
+        Debug.Assert(winPanel != null, "WinPanel missing");
+        if (winPanel == null)
+            return;
+        int max = HealthManager.Instance.MaxHealth;
+        int stars = health * 3 > max * 2 ? 3 : health * 3 > max ? 2 : 1;
+        winPanel.gameObject.SetActive(true);
+        winPanel.SetAsLastSibling();
+        for (int i = 1; i <= 3; i++)
+            winPanel.Find("Star_" + i).gameObject.SetActive(i <= stars);
     }
 
     Button FindButton(string name)
