@@ -124,6 +124,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        RefreshLevelButtons();
         foreach (Button button in GetComponentsInChildren<Button>(true))
         {
             if (button.transform.IsChildOf(optionsPanel.transform))
@@ -198,9 +199,40 @@ public class MenuManager : MonoBehaviour
 
     public void OpenPlay()
     {
+        RefreshLevelButtons();
         playPanel.SetActive(true);
         playPanel.GetComponent<Animator>().Play("PlaySlideIn", 0, 0f);
         RefreshDim();
+    }
+
+    public static void ClearLevel(string sceneName)
+    {
+        const string prefix = "Level_";
+        if (!sceneName.StartsWith(prefix))
+            return;
+        if (!int.TryParse(sceneName.Substring(prefix.Length), out int level))
+            return;
+        if (level <= PlayerPrefs.GetInt("clearedLevel", 0))
+            return;
+        PlayerPrefs.SetInt("clearedLevel", level);
+        PlayerPrefs.Save();
+    }
+
+    void RefreshLevelButtons()
+    {
+        int cleared = PlayerPrefs.GetInt("clearedLevel", 0);
+        foreach (var button in playPanel.GetComponentsInChildren<Button>(true))
+        {
+            const string prefix = "Level_";
+            if (!button.name.StartsWith(prefix))
+                continue;
+            if (!int.TryParse(button.name.Substring(prefix.Length), out int level))
+                continue;
+            bool open = level <= cleared + 1;
+            button.interactable = open;
+            if (button.targetGraphic != null)
+                button.targetGraphic.color = open ? Color.white : new Color(0.35f, 0.35f, 0.35f, 1f);
+        }
     }
 
     public void ClosePlay()

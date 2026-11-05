@@ -25,12 +25,6 @@ public class LevelCanvasLoader : MonoBehaviour
             return;
         }
 
-        if (scene.name == "Level_1")
-        {
-            OnLevelOne(scene);
-            return;
-        }
-
         var canvases = FindObjectsByType<Canvas>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (var canvas in canvases)
         {
@@ -67,17 +61,6 @@ public class LevelCanvasLoader : MonoBehaviour
         }
 
         EnsureHome(spawned);
-    }
-
-    static void OnLevelOne(Scene scene)
-    {
-        if (spawned != null)
-            Destroy(spawned);
-        foreach (var canvas in FindObjectsByType<Canvas>(FindObjectsInactive.Include, FindObjectsSortMode.None))
-        {
-            if (canvas.gameObject.scene == scene && canvas.name == "Canvas")
-                EnsureHome(canvas.gameObject);
-        }
     }
 
     static void EnsureHome(GameObject canvas)
@@ -220,6 +203,7 @@ public class LevelHome : MonoBehaviour
         Debug.Assert(winPanel != null, "WinPanel missing");
         if (winPanel == null)
             return;
+        MenuManager.ClearLevel(SceneManager.GetActiveScene().name);
         int max = HealthManager.Instance.MaxHealth;
         int stars = health * 3 > max * 2 ? 3 : health * 3 > max ? 2 : 1;
         winPanel.gameObject.SetActive(true);
