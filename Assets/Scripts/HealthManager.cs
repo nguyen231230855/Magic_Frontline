@@ -1,3 +1,4 @@
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 public class HealthManager : MonoBehaviour
@@ -18,14 +19,14 @@ public class HealthManager : MonoBehaviour
     {
         health = MaxHealth;
         Instance = this;
-        healthTxt.text = health.ToString();
+        healthTxt.text = health.ToString("0.##", CultureInfo.InvariantCulture);
     }
 
     public void UpdateHealth(int changeAmount)
     {
         health += changeAmount;
 
-        healthTxt.text = health.ToString();
+        healthTxt.text = health.ToString("0.##", CultureInfo.InvariantCulture);
 
         if (health <= 0)
         {

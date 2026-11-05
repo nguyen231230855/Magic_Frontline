@@ -61,6 +61,12 @@ public class LevelCanvasLoader : MonoBehaviour
                 wave.UseHud(goButton, waveTxt);
         }
 
+        var placer = FindFirstObjectByType<TowerPlacer>();
+        var coins = spawned.GetComponentInChildren<CoinManager>(true);
+        Debug.Assert(placer != null && coins != null, "Level missing coins");
+        if (placer != null && coins != null)
+            coins.SetStart(placer.startCoins);
+
         EnsureHome(spawned);
     }
 

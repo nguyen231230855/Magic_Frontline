@@ -13,7 +13,10 @@ public class Tower : MonoBehaviour
     public float range = 3f;
     public float fireRate = 1f;
     public GameObject projectilePrefab;
+    public GameObject effectProjectilePrefab;
     public Transform firePoint;
+    public AudioClip shootSfx;
+    public float shootVolume = 1f;
 
     public TowerUpgradeStages[] upgradeStages;
     public int upgradeStage = 0;
@@ -71,9 +74,13 @@ public class Tower : MonoBehaviour
 
     void Shoot(Enemy target)
     {
-        GameObject p = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        bool fire = effectProjectilePrefab != null && upgradeStage >= upgradeStages.Length;
+        GameObject prefab = fire ? effectProjectilePrefab : projectilePrefab;
+        GameObject p = Instantiate(prefab, firePoint.position, Quaternion.identity);
         Projectile pr = p.GetComponent<Projectile>();
         pr.target = target.transform;
+        if (shootSfx != null)
+            AudioManager.Instance.PlaySFX(shootSfx, shootVolume);
     }
 
     public void Upgrade()

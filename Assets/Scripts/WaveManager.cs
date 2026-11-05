@@ -8,7 +8,10 @@ public class WaveData
 {
     public float duration = 10f;
     public int easyEnemies = 5;
+    public int normalEnemies = 3;
     public int hardEnemies = 2;
+    public int sHardEnemies = 1;
+    public int orcEnemies;
 }
 
 public class WaveManager : MonoBehaviour
@@ -17,7 +20,10 @@ public class WaveManager : MonoBehaviour
     public Button startWaveButton;
 
     public GameObject easyEnemyPrefab;
+    public GameObject normalEnemyPrefab;
     public GameObject hardEnemyPrefab;
+    public GameObject sHardEnemyPrefab;
+    public GameObject orcEnemyPrefab;
 
     public Transform[] wayPoints;
 
@@ -94,10 +100,32 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds((wave.duration / 3) / wave.easyEnemies);
         }
 
+        for(int i = 0; i < wave.normalEnemies; i++)
+        {
+            SpawnEnemy(normalEnemyPrefab);
+            yield return new WaitForSeconds((wave.duration / 3) / wave.normalEnemies);
+        }
+
         for(int i = 0; i < wave.hardEnemies; i++)
         {
             SpawnEnemy(hardEnemyPrefab);
             yield return new WaitForSeconds((wave.duration / 3) / wave.hardEnemies);
+        }
+
+        for(int i = 0; i < wave.sHardEnemies; i++)
+        {
+            SpawnEnemy(sHardEnemyPrefab);
+            yield return new WaitForSeconds((wave.duration / 3) / wave.sHardEnemies);
+        }
+
+        if (wave.orcEnemies > 0)
+        {
+            Debug.Assert(orcEnemyPrefab != null, "Wave has orcs but no prefab");
+            for (int i = 0; i < wave.orcEnemies; i++)
+            {
+                SpawnEnemy(orcEnemyPrefab);
+                yield return new WaitForSeconds((wave.duration / 3) / wave.orcEnemies);
+            }
         }
 
         yield return new WaitForSeconds(wave.duration / 3);

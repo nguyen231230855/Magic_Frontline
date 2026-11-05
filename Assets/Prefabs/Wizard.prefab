@@ -104,7 +104,10 @@ MonoBehaviour:
   range: 3.4
   fireRate: 0.6
   projectilePrefab: {fileID: 4862992442665631509, guid: 8c0ba380e26c47440b0ae7a27b18ea97, type: 3}
+  effectProjectilePrefab: {fileID: 710010001, guid: 4e7c1a9b6d2f48e0b5c3a1789de04f62, type: 3}
   firePoint: {fileID: 4471485026568711982}
+  shootSfx: {fileID: 8300000, guid: 55ba42cffcba47445ad04fe8bed6150f, type: 3}
+  shootVolume: 0.8
   upgradeStages:
   - range: 4.6
     fireRate: 0.85
@@ -114,6 +117,10 @@ MonoBehaviour:
     fireRate: 1.1
     sprite: {fileID: 7396544787085421766, guid: dc055b0f5cf9d8949b8f2b60419f6d68, type: 3}
     price: 30
+  - range: 6
+    fireRate: 1.1
+    sprite: {fileID: 4766642050451701133, guid: 7b580eb19b29c3f4e882b960685ed87f, type: 3}
+    price: 40
   upgradeStage: 0
   towerUpgradeUIPrefab: {fileID: 5780336256910844033, guid: bf9f294a7d65f1241afa7b7d4bb2f2df, type: 3}
   cloudPS: {fileID: 5523416868174680409, guid: a9da6dd522a6b6a438af0a6f67759ac9, type: 3}

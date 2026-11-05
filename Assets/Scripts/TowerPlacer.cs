@@ -11,10 +11,17 @@ public class TowerPlacer : MonoBehaviour
     public Tilemap nonPlacementMap;
 
     public GameObject ghostPrefab;
+    public AudioClip placeSfx;
+    public int startCoins = 10;
 
     private HashSet<Vector3Int> occupiedCells = new HashSet<Vector3Int>();
     private GameObject ghostInstance;
 
+    public void PlayPlaceSfx()
+    {
+        if (placeSfx != null)
+            AudioManager.Instance.PlaySFX(placeSfx);
+    }
 
     void Update()
     {
@@ -74,6 +81,7 @@ public class TowerPlacer : MonoBehaviour
         if (!placementMap.HasTile(cellPos) || occupiedCells.Contains(cellPos)) return;
 
         Instantiate(TowerSelectionUI.SelectedTowerPrefab, ghostInstance.transform.position, Quaternion.identity);
+        PlayPlaceSfx();
 
         CoinManager.instance.UpdateCoins(-TowerSelectionUI.SelectedTowerPrefab.GetComponent<Tower>().towerPrice);
 

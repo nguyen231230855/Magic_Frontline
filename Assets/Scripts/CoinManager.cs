@@ -1,3 +1,4 @@
+using System.Globalization;
 using UnityEngine;
 using TMPro;
 
@@ -16,6 +17,13 @@ public class CoinManager : MonoBehaviour
         UpdateCoins(0);
     }
 
+    public void SetStart(int amount)
+    {
+        startCoins = amount;
+        coins = 0;
+        UpdateCoins(amount);
+    }
+
     public void ResetCoins()
     {
         coins = startCoins;
@@ -26,6 +34,6 @@ public class CoinManager : MonoBehaviour
     public void UpdateCoins(int changeAmount)
     {
         coins += changeAmount;
-        coinTxt.text = coins.ToString();
+        coinTxt.text = coins.ToString("0.##", CultureInfo.InvariantCulture);
     }
 }

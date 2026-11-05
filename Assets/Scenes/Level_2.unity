@@ -3866,7 +3866,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -4037,22 +4037,46 @@ MonoBehaviour:
   waves:
   - duration: 18
     easyEnemies: 8
-    hardEnemies: 2
+    normalEnemies: 3
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 0
   - duration: 16
     easyEnemies: 6
-    hardEnemies: 4
+    normalEnemies: 3
+    hardEnemies: 3
+    sHardEnemies: 1
+    orcEnemies: 0
   - duration: 15
-    easyEnemies: 6
-    hardEnemies: 6
+    easyEnemies: 3
+    normalEnemies: 2
+    hardEnemies: 4
+    sHardEnemies: 2
+    orcEnemies: 1
   - duration: 14
-    easyEnemies: 4
-    hardEnemies: 8
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 6
+    sHardEnemies: 3
+    orcEnemies: 1
   - duration: 12
-    easyEnemies: 2
-    hardEnemies: 10
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 7
+    sHardEnemies: 4
+    orcEnemies: 2
+  - duration: 10
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 8
+    sHardEnemies: 5
+    orcEnemies: 3
   startWaveButton: {fileID: 1473482958}
   easyEnemyPrefab: {fileID: 2924450634884478164, guid: 0ab2825a19f1d8a48a63d23dd248d148, type: 3}
+  normalEnemyPrefab: {fileID: 6882696952312109828, guid: 6877b89e6f03a1e46b836796f1954c36, type: 3}
   hardEnemyPrefab: {fileID: 6882696952312109828, guid: ecf4a2841df41d346aa4bc9ebf3e071f, type: 3}
+  sHardEnemyPrefab: {fileID: 6882696952312109828, guid: 3aec3115a79fadc43aeaa30325c5295b, type: 3}
+  orcEnemyPrefab: {fileID: 710020001, guid: 2f8a6c1d4b9e4a70c3d5e8f1a6b04792, type: 3}
   wayPoints:
   - {fileID: 365023111}
   - {fileID: 1121052913}
@@ -4075,15 +4099,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 365023111}
-  - {fileID: 1121052913}
-  - {fileID: 1066356317}
-  - {fileID: 1035992575}
-  - {fileID: 2097498181}
-  - {fileID: 858717708}
-  - {fileID: 1526593063}
-  - {fileID: 1709899931}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &613837870
@@ -4293,6 +4309,8 @@ MonoBehaviour:
   placementMap: {fileID: 42507606}
   nonPlacementMap: {fileID: 177171978}
   ghostPrefab: {fileID: 8731875975634871556, guid: 692190b6f500ec54c880395a15c1b958, type: 3}
+  placeSfx: {fileID: 8300000, guid: 749ab1432968eeb49bc97ef55725da70, type: 3}
+  startCoins: 20
 --- !u!4 &833132113
 Transform:
   m_ObjectHideFlags: 0
@@ -4337,7 +4355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &887682149
 GameObject:
@@ -4826,7 +4844,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066356316
 GameObject:
@@ -4857,7 +4875,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090984164
 GameObject:
@@ -4967,7 +4985,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172712407
 GameObject:
@@ -7928,7 +7946,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1709899930
 GameObject:
@@ -7959,7 +7977,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2054925449
 GameObject:
@@ -8065,7 +8083,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2098142739
 GameObject:
@@ -8118,11 +8136,19 @@ Grid:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 553390300}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 2098142740}
   - {fileID: 887682153}
   - {fileID: 1090984167}
   - {fileID: 833132113}
-  - {fileID: 553390300}
   - {fileID: 1325316376}
+  - {fileID: 365023111}
+  - {fileID: 858717708}
+  - {fileID: 1035992575}
+  - {fileID: 1066356317}
+  - {fileID: 1121052913}
+  - {fileID: 1526593063}
+  - {fileID: 1709899931}
+  - {fileID: 2097498181}

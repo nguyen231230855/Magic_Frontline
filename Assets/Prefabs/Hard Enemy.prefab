@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  health: 3
+  health: 5
+  reward: 4
   waypoints: []
   currentWayPoint: 0
+  damageTaken: 1

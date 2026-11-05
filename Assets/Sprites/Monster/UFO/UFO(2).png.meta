@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e817a45e2959d1b4294384fa82937de8
+guid: add0cdd047253c044ad635cac9e0ed2c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5090445835463174181
-    second: UFO(1)_0
+      213: -4455678398775194038
+    second: UFO(2)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UFO(1)_0
+      name: UFO(2)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,15 +108,15 @@ TextureImporter:
         width: 64
         height: 80
       alignment: 9
-      pivot: {x: 0.5, y: 0.45}
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd7d9d4ab7a1b59b0800000000000000
-      internalID: -5090445835463174181
+      spriteID: a4e8f9f7a104a22c0800000000000000
+      internalID: -4455678398775194038
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3a448c8488a89b74b82a27e1c8f15ac9
+    spriteID: 7863d836de5d0d344aa24a582b13725d
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UFO(1)_0: -5090445835463174181
+      UFO(2)_0: -4455678398775194038
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

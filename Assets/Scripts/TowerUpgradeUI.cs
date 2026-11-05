@@ -14,6 +14,7 @@ public class TowerUpgradeUI : MonoBehaviour
     private void Awake()
     {
         upgradeButton.onClick.AddListener(TryUpgrade);
+        upgradeButton.targetGraphic.raycastTarget = true;
     }
     
     private void TryUpgrade()
@@ -24,6 +25,7 @@ public class TowerUpgradeUI : MonoBehaviour
         }
 
         tower.Upgrade();
+        FindFirstObjectByType<TowerPlacer>()?.PlayPlaceSfx();
 
         Destroy(gameObject);
     }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class AudioManager : MonoBehaviour
     AudioMixerGroup sfxGroup;
     float musicLevel = 1f;
     float sfxLevel = 1f;
+    Dictionary<AudioClip, AudioClip> boosted;
 
     public float MusicLevel => musicLevel;
     public float SfxLevel => sfxLevel;
@@ -76,7 +78,30 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip clip, float volume = 1f)
     {
+        if (volume > 1f)
+        {
+            clip = Boost(clip, volume);
+            volume = 1f;
+        }
         StartCoroutine(PlaySFXCoroutine(clip, volume));
+    }
+
+    AudioClip Boost(AudioClip clip, float gain)
+    {
+        boosted ??= new Dictionary<AudioClip, AudioClip>();
+        if (boosted.TryGetValue(clip, out AudioClip cached))
+            return cached;
+        float[] data = new float[clip.samples * clip.channels];
+        bool read = clip.GetData(data, 0);
+        Debug.Assert(read, "SFX GetData failed");
+        if (!read)
+            return clip;
+        for (int i = 0; i < data.Length; i++)
+            data[i] = Mathf.Clamp(data[i] * gain, -1f, 1f);
+        AudioClip copy = AudioClip.Create(clip.name, clip.samples, clip.channels, clip.frequency, false);
+        copy.SetData(data, 0);
+        boosted[clip] = copy;
+        return copy;
     }
 
     IEnumerator PlaySFXCoroutine(AudioClip clip, float volume = 1f)

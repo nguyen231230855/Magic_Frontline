@@ -821,7 +821,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1373234360}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &155395199
 GameObject:
@@ -999,7 +999,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1373234360}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &177171977
 GameObject:
@@ -3932,7 +3932,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &388643936
 GameObject:
@@ -3963,7 +3963,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1373234360}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -4134,22 +4134,58 @@ MonoBehaviour:
   waves:
   - duration: 18
     easyEnemies: 4
-    hardEnemies: 0
-  - duration: 16
-    easyEnemies: 4
+    normalEnemies: 0
     hardEnemies: 1
-  - duration: 15
+    sHardEnemies: 0
+    orcEnemies: 0
+  - duration: 16
     easyEnemies: 3
-    hardEnemies: 2
+    normalEnemies: 0
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 0
+  - duration: 15
+    easyEnemies: 2
+    normalEnemies: 0
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 1
   - duration: 14
-    easyEnemies: 2
-    hardEnemies: 3
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 2
+    sHardEnemies: 1
+    orcEnemies: 1
   - duration: 12
-    easyEnemies: 2
+    easyEnemies: 0
+    normalEnemies: 0
     hardEnemies: 3
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 10
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 3
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 8
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 4
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 6
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 4
+    sHardEnemies: 2
+    orcEnemies: 1
   startWaveButton: {fileID: 1473482958}
   easyEnemyPrefab: {fileID: 2924450634884478164, guid: 0ab2825a19f1d8a48a63d23dd248d148, type: 3}
+  normalEnemyPrefab: {fileID: 6882696952312109828, guid: 6877b89e6f03a1e46b836796f1954c36, type: 3}
   hardEnemyPrefab: {fileID: 6882696952312109828, guid: ecf4a2841df41d346aa4bc9ebf3e071f, type: 3}
+  sHardEnemyPrefab: {fileID: 6882696952312109828, guid: 3aec3115a79fadc43aeaa30325c5295b, type: 3}
+  orcEnemyPrefab: {fileID: 710020001, guid: 2f8a6c1d4b9e4a70c3d5e8f1a6b04792, type: 3}
   wayPoints:
   - {fileID: 365023111}
   - {fileID: 1121052913}
@@ -4168,11 +4204,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 365023111}
-  - {fileID: 1121052913}
-  - {fileID: 1066356317}
-  - {fileID: 1035992575}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &613837870
@@ -4382,6 +4414,8 @@ MonoBehaviour:
   placementMap: {fileID: 42507606}
   nonPlacementMap: {fileID: 177171978}
   ghostPrefab: {fileID: 8731875975634871556, guid: 692190b6f500ec54c880395a15c1b958, type: 3}
+  placeSfx: {fileID: 8300000, guid: 749ab1432968eeb49bc97ef55725da70, type: 3}
+  startCoins: 35
 --- !u!4 &833132113
 Transform:
   m_ObjectHideFlags: 0
@@ -4884,7 +4918,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066356316
 GameObject:
@@ -4915,7 +4949,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1090984164
 GameObject:
@@ -5025,7 +5059,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 553390300}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172712407
 GameObject:
@@ -5131,7 +5165,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1373234360}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1246741996
 GameObject:
@@ -7711,23 +7745,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - duration: 18
-    easyEnemies: 5
-    hardEnemies: 0
+    easyEnemies: 4
+    normalEnemies: 0
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 0
   - duration: 16
-    easyEnemies: 4
-    hardEnemies: 2
-  - duration: 15
-    easyEnemies: 4
-    hardEnemies: 2
-  - duration: 14
     easyEnemies: 3
-    hardEnemies: 3
-  - duration: 12
+    normalEnemies: 0
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 0
+  - duration: 15
     easyEnemies: 2
+    normalEnemies: 0
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 1
+  - duration: 14
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 2
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 12
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 3
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 10
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 3
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 8
+    easyEnemies: 0
+    normalEnemies: 0
     hardEnemies: 4
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 6
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 4
+    sHardEnemies: 2
+    orcEnemies: 1
   startWaveButton: {fileID: 1473482958}
   easyEnemyPrefab: {fileID: 2924450634884478164, guid: 0ab2825a19f1d8a48a63d23dd248d148, type: 3}
+  normalEnemyPrefab: {fileID: 6882696952312109828, guid: 6877b89e6f03a1e46b836796f1954c36, type: 3}
   hardEnemyPrefab: {fileID: 6882696952312109828, guid: ecf4a2841df41d346aa4bc9ebf3e071f, type: 3}
+  sHardEnemyPrefab: {fileID: 6882696952312109828, guid: 3aec3115a79fadc43aeaa30325c5295b, type: 3}
+  orcEnemyPrefab: {fileID: 710020001, guid: 2f8a6c1d4b9e4a70c3d5e8f1a6b04792, type: 3}
   wayPoints:
   - {fileID: 139108036}
   - {fileID: 1428567398}
@@ -7744,17 +7814,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373234358}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 139108036}
-  - {fileID: 1428567398}
-  - {fileID: 164140648}
-  - {fileID: 388643937}
-  - {fileID: 1966407827}
-  - {fileID: 1190348844}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1428567397
@@ -7786,7 +7850,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1373234360}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1460121820
 GameObject:
@@ -7817,7 +7881,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1528476262}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1466728804
 GameObject:
@@ -8148,7 +8212,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1528476262}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1528476260
 GameObject:
@@ -8181,23 +8245,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - duration: 18
-    easyEnemies: 3
-    hardEnemies: 0
-  - duration: 16
     easyEnemies: 4
-    hardEnemies: 0
-  - duration: 15
+    normalEnemies: 0
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 0
+  - duration: 16
     easyEnemies: 3
-    hardEnemies: 2
+    normalEnemies: 0
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 0
+  - duration: 15
+    easyEnemies: 2
+    normalEnemies: 0
+    hardEnemies: 1
+    sHardEnemies: 0
+    orcEnemies: 1
   - duration: 14
-    easyEnemies: 2
+    easyEnemies: 0
+    normalEnemies: 0
     hardEnemies: 2
+    sHardEnemies: 1
+    orcEnemies: 1
   - duration: 12
-    easyEnemies: 2
-    hardEnemies: 2
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 3
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 10
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 3
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 8
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 4
+    sHardEnemies: 1
+    orcEnemies: 1
+  - duration: 6
+    easyEnemies: 0
+    normalEnemies: 0
+    hardEnemies: 4
+    sHardEnemies: 2
+    orcEnemies: 1
   startWaveButton: {fileID: 1473482958}
   easyEnemyPrefab: {fileID: 2924450634884478164, guid: 0ab2825a19f1d8a48a63d23dd248d148, type: 3}
+  normalEnemyPrefab: {fileID: 6882696952312109828, guid: 6877b89e6f03a1e46b836796f1954c36, type: 3}
   hardEnemyPrefab: {fileID: 6882696952312109828, guid: ecf4a2841df41d346aa4bc9ebf3e071f, type: 3}
+  sHardEnemyPrefab: {fileID: 6882696952312109828, guid: 3aec3115a79fadc43aeaa30325c5295b, type: 3}
+  orcEnemyPrefab: {fileID: 710020001, guid: 2f8a6c1d4b9e4a70c3d5e8f1a6b04792, type: 3}
   wayPoints:
   - {fileID: 1501602251}
   - {fileID: 1460121821}
@@ -8215,10 +8315,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1501602251}
-  - {fileID: 1460121821}
-  - {fileID: 1681150966}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1681150965
@@ -8250,7 +8347,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1528476262}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1966407826
 GameObject:
@@ -8281,7 +8378,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1373234360}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2054925449
 GameObject:
@@ -8409,13 +8506,26 @@ Grid:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 553390300}
+  - {fileID: 1373234360}
+  - {fileID: 1528476262}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 2098142740}
   - {fileID: 887682153}
   - {fileID: 1090984167}
   - {fileID: 833132113}
-  - {fileID: 553390300}
-  - {fileID: 1528476262}
-  - {fileID: 1373234360}
   - {fileID: 1325316376}
+  - {fileID: 139108036}
+  - {fileID: 164140648}
+  - {fileID: 365023111}
+  - {fileID: 388643937}
+  - {fileID: 1035992575}
+  - {fileID: 1066356317}
+  - {fileID: 1121052913}
+  - {fileID: 1190348844}
+  - {fileID: 1428567398}
+  - {fileID: 1460121821}
+  - {fileID: 1501602251}
+  - {fileID: 1681150966}
+  - {fileID: 1966407827}
